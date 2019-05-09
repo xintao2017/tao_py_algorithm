@@ -2,6 +2,8 @@
 __author__ = "TAO XIN"
 __copyright__ = "MIT License"
 
+from decorators import timer
+
 """ Heap sorting algorithm implementation!"""
 
 
@@ -28,7 +30,7 @@ def heapify(iList, n, i):
         heapify(iList, n, largest)
 
 
-
+@timer
 def heap_sort(iList):
     n = len(iList)
 

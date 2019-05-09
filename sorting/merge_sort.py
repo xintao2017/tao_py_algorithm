@@ -3,6 +3,8 @@
 __author__ = "TAO XIN"
 __copyright__ = "copyright: MIT License"
 
+from decorators import timer
+
 """
  Merge sort function which sort a collection of numbers
 
@@ -12,8 +14,11 @@ __copyright__ = "copyright: MIT License"
   Average case O(n log n)
 """
 
-
+@timer
 def merge_sort(iList):
+    m_sort(iList)
+
+def m_sort(iList):
 
     if len(iList) > 1:
         mid = len(iList) // 2
@@ -21,8 +26,8 @@ def merge_sort(iList):
         L = iList[:mid]
         R = iList[mid:]
 
-        merge_sort(L)
-        merge_sort(R)
+        m_sort(L)
+        m_sort(R)
 
         i = j = k = 0
 

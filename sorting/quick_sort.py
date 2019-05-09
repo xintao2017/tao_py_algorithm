@@ -3,6 +3,8 @@
 __author__ = "TAO XIN"
 __copyright__ = "copyright: MIT License"
 
+from decorators import timer
+
 """
  A simple quick sort function which sort a collection of numbers
 
@@ -12,12 +14,16 @@ __copyright__ = "copyright: MIT License"
   Average case O(n log n)
 """
 
-def quick_sort(iList, low, high):
+def q_sort(iList, low, high):
     if low < high:
         i = partition(iList, low, high)
 
-        quick_sort(iList, low, i - 1)
-        quick_sort(iList, i + 1, high)
+        q_sort(iList, low, i - 1)
+        q_sort(iList, i + 1, high)
+
+@timer
+def quick_sort(iList):
+    q_sort(iList, 0, len(iList)-1)
 
 
 def partition(iList, low, high):
