@@ -33,7 +33,6 @@ class Linkedlist(object):
         if head is not None:
             self.curr.next = None
 
-
     ## __len__()
     def __len__(self):
         counter = 0
@@ -42,13 +41,10 @@ class Linkedlist(object):
             counter += 1
         return counter
 
-    def add(self, node):
-        if self.head is None:
-            self.head = node
-            self.curr = node
-        else:
-            self.curr.next = node
-            self.curr = node
+    def addToFront(self, data):
+        d = Node(data, self.head)
+        self.head = d
+        self.curr = node
 
     ## __str__()
     def __str__(self):
@@ -58,17 +54,11 @@ class Linkedlist(object):
             strx += self.curr.data + ' '
         return f"[{strx}]"
 
-    ## append ()
-    def append(self, node):
-        self.curr.next = node
-        self.curr = node
-        self.curr.next = None
-
     ## get()
     def get(self, index):
         if self.head is None:
             raise EmptyListException()
-        if self.__len__ < index:
+        if self.__len__() < index:
             raise IndexOutOfBound()
         node = self.head
         i = 0
@@ -79,12 +69,11 @@ class Linkedlist(object):
                 node = node.next
                 i += 1
 
-
     ## delete()
     def delete(self, index):
         if self.head is None:
             raise EmptyListException()
-        if self.__len__ < index:
+        if self.__len__() < index:
             raise IndexOutOfBound()
         node = self.head
         pre_node = self.head
